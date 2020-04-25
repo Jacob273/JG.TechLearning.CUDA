@@ -14,13 +14,32 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <CudaCompile Include="lab2bmp.cu" />
+    <CudaCompile Include="lab2bmp.cu">
+      <DeploymentContent>true</DeploymentContent>
+      <FileType>CppCode</FileType>
+      <Include Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">./;./common/inc;./EasyBMP_1.06;%(Include)</Include>
+      <Include Condition="'$(Configuration)|$(Platform)'=='Release|x64'">./;./common/inc;./EasyBMP_1.06;%(Include)</Include>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </CudaCompile>
     <CudaCompile Include="lab1pow3.cu">
       <FileType>CppCode</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </CudaCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="D:\StudiaRemote\EasyBMP_1.06\EasyBMP.h" />
+    <ClInclude Include="EasyBMP_1.06\EasyBMP.h" />
+    <ClInclude Include="EasyBMP_1.06\EasyBMP_BMP.h" />
+    <ClInclude Include="EasyBMP_1.06\EasyBMP_DataStructures.h" />
+    <ClInclude Include="EasyBMP_1.06\EasyBMP_VariousBMPutilities.h" />
+    <ClInclude Include="lab2bmp.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="EasyBMP_1.06\EasyBMP.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="img\example.bmp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{997E0757-EA74-4A4E-A0FC-47D8C8831A15}</ProjectGuid>
@@ -76,13 +95,13 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <AdditionalDependencies>cudart_static.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(CudaToolkitLibDir);D:\StudiaRemote\EasyBMP_1.06</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(CudaToolkitLibDir);.\EasyBMP_1.06</AdditionalLibraryDirectories>
       <OutputFile>$(OutDir)/JG.TechLearning.Cuda.ConsoleApp.exe</OutputFile>
     </Link>
     <CudaCompile>
       <CodeGeneration>compute_30,sm_30;compute_35,sm_35;compute_37,sm_37;compute_50,sm_50;compute_52,sm_52;compute_60,sm_60;compute_61,sm_61;compute_70,sm_70;compute_75,sm_75;</CodeGeneration>
       <AdditionalOptions>-Xcompiler "/wd 4819" %(AdditionalOptions)</AdditionalOptions>
-      <Include>./;./common/inc</Include>
+      <Include>./;./common/inc;./EasyBMP_1.06</Include>
       <Defines>WIN32</Defines>
     </CudaCompile>
   </ItemDefinitionGroup>
