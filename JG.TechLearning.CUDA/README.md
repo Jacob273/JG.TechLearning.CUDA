@@ -3,6 +3,6 @@ CUDA (Compute Unified Device Architecture) is a parallel computing platform and 
 https://en.wikipedia.org/wiki/CUDA
 
 
-Written on NVIDIA Cuda Runtime 10.2
+Code written on NVIDIA Cuda Runtime 10.2
 
 Tested on Quadro M2000M
