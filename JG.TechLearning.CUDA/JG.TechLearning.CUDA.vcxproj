@@ -19,13 +19,13 @@
       <FileType>CppCode</FileType>
       <Include Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">./;./common/inc;./EasyBMP_1.06;%(Include)</Include>
       <Include Condition="'$(Configuration)|$(Platform)'=='Release|x64'">./;./common/inc;./EasyBMP_1.06;%(Include)</Include>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </CudaCompile>
     <CudaCompile Include="lab1pow3.cu">
       <FileType>CppCode</FileType>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </CudaCompile>
   </ItemGroup>
   <ItemGroup>
@@ -33,7 +33,6 @@
     <ClInclude Include="EasyBMP_1.06\EasyBMP_BMP.h" />
     <ClInclude Include="EasyBMP_1.06\EasyBMP_DataStructures.h" />
     <ClInclude Include="EasyBMP_1.06\EasyBMP_VariousBMPutilities.h" />
-    <ClInclude Include="lab2bmp.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EasyBMP_1.06\EasyBMP.cpp" />
