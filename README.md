@@ -8,5 +8,5 @@ Tested on Quadro M2000M
 
 Implemented & measured:
 
-1. Polynomial calculation on CPU & GPU
+1. Polynomial calculation on CPU & GPU (part of the code was provided by an academic teacher)
 2. Image gray scaling on CPU & GPU
