@@ -12,4 +12,4 @@ Implemented & measured:
 2. Image gray scaling on CPU & GPU
 
 
-_Tasks that have been done here and theoretical introduction to laboratories was developed by IT engineer and academic teacher - Slawomir Wernikowski at the West Pomeranian University of Technology_
+_Tasks that have been completed here and theoretical introduction to laboratories was developed by IT engineer and academic teacher - Slawomir Wernikowski at the West Pomeranian University of Technology_
