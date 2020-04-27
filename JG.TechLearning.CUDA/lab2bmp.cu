@@ -151,7 +151,7 @@ int main(void)
 	char currentPathBuffer[256];
 	GetCurrentDirectoryA(256, currentPathBuffer);
 	std::string currentPathString = currentPathBuffer;
-	std::string fileName = "example.bmp";
+	std::string fileName = "example2.bmp";
 	std::string originalImageFullFilePath = currentPathString.append("\\img\\"+ fileName);
 	const int exampleNameOffset = fileName.length();
 	std::string cpuOutputPath = std::string(originalImageFullFilePath).insert(originalImageFullFilePath.length() - exampleNameOffset, "CPU-JakubGmur-Output-");
@@ -175,7 +175,9 @@ int main(void)
 	sourceImageForCPU.SetBitDepth(bitDepth);
 	//Gray scaling on CPU
 	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~Started Gray Scaling Img on CPU " << std::endl;
+	auto cpuStart = high_resolution_clock::now();
 	GrayScaleCPU(sourceImageForCPU);
+	auto cpuEnd = high_resolution_clock::now();
 	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~Finished Gray Scaling Img on CPU" << std::endl;
 	if (!sourceImageForCPU.WriteToFile(cpuOutputPath.c_str()))
 	{
@@ -219,23 +221,26 @@ int main(void)
 	ErrorCheckCUDA(cudaMemcpy(d_rgbInputImageArr_cuda, h_rgbImageArr, imageResolution * sizeof(unsigned char), cudaMemcpyHostToDevice));
 
 	// Block size
-	dim3 dimBlock(32, 32);
+	dim3 dimBlock(128, 128);
 	dim3 dimGrid(ceil((sourceImageForGPU.TellWidth() - 1) / dimBlock.x), ceil((sourceImageForGPU.TellHeight() + dimBlock.y - 1) / dimBlock.y));
 	
 	//Gray scaling on GPU
 	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~Started Gray Scaling Img on GPU " << std::endl;
+	auto gpuStart = high_resolution_clock::now();
 	GrayScaleImage__CudaKernel << <dimGrid, dimBlock >> > (d_rgbInputImageArr_cuda, d_AvgOfRgbImgArr_cuda, sourceImageForGPU.TellWidth(), sourceImageForGPU.TellHeight());
 	ErrorCheckCUDA(cudaThreadSynchronize());
+	auto gpuEnd = high_resolution_clock::now();
 	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~Finished Gray Scaling Img on GPU" << std::endl;
 
 	//Copying from Device to Host
 	unsigned char* h_AvgOfRgbImgArr = new unsigned char[imageResolution];  //array for storing (avg of RGB) data on local device
 	ErrorCheckCUDA(cudaMemcpy(h_AvgOfRgbImgArr, d_AvgOfRgbImgArr_cuda, imageResolution * sizeof(unsigned char), cudaMemcpyDeviceToHost));
 
-	for (int i = 0; i < 1000; i++)
-	{
-		std::cout << (int)h_AvgOfRgbImgArr[i] << std::endl;
-	}
+	//test code to verify what are the values which were calculated 
+	//for (int i = 0; i < 1000; i++)
+	//{
+	//	std::cout << (int)h_AvgOfRgbImgArr[i] << std::endl;
+	//}
 
 	//Writing 
 	BMP gpuResult = OneDimensionCharArrayToRgbBitmap(h_AvgOfRgbImgArr, sourceImageForGPU);
@@ -248,5 +253,11 @@ int main(void)
 	ErrorCheckCUDA(cudaFree(d_rgbInputImageArr_cuda));
 	free(h_rgbImageArr);
 	free(h_AvgOfRgbImgArr);
+
+	auto cpuDuration = duration_cast<nanoseconds>(gpuEnd - gpuStart);
+	auto gpuDuration = duration_cast<nanoseconds>(cpuEnd - cpuStart);
+
+	std::cout << "CPU duration " << cpuDuration.count() << "  nanoseconds " << std::endl;
+	std::cout << "GPU duration " << gpuDuration.count() << "  nanoseconds" <<std::endl;
 	return 0;
 }
