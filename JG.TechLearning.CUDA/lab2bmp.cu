@@ -254,10 +254,10 @@ int main(void)
 	free(h_rgbImageArr);
 	free(h_AvgOfRgbImgArr);
 
-	auto cpuDuration = duration_cast<nanoseconds>(gpuEnd - gpuStart);
-	auto gpuDuration = duration_cast<nanoseconds>(cpuEnd - cpuStart);
+	auto gpuDuration = duration_cast<nanoseconds>(gpuEnd - gpuStart);
+	auto cpuDuration = duration_cast<nanoseconds>(cpuEnd - cpuStart);
 
-	std::cout << "CPU duration " << cpuDuration.count() << "  nanoseconds " << std::endl;
-	std::cout << "GPU duration " << gpuDuration.count() << "  nanoseconds" <<std::endl;
+	std::cout << "CPU duration " << gpuDuration.count() << "  nanoseconds " << std::endl;
+	std::cout << "GPU duration " << cpuDuration.count() << "  nanoseconds" <<std::endl;
 	return 0;
 }
