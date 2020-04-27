@@ -10,3 +10,6 @@ Implemented & measured:
 
 1. Polynomial calculation on CPU & GPU (part of the code was provided by an academic teacher)
 2. Image gray scaling on CPU & GPU
+
+
+Tasks that have been done here and theoretical introduction to laboratories was developed by IT engineer and academic teacher - Slawomir Wernikowski at the West Pomeranian University of Technology
