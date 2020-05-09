@@ -55,7 +55,6 @@ int main(void)
     /** Declaration of size of arrays **/
     int widthA = 300, heightA = 300;
     int widthB = 300, heightB = 300;
-    int widthC = 0, heightC = 0;
 
     /** First N Rows & M columns that are going to be printed **/
     const int rowsToPrint = 3;
@@ -67,8 +66,7 @@ int main(void)
     /** Size check: (2x5 * 5x2 = 5x2) **/
     if (heightA == widthB)
     {
-        heightC = heightA;
-        widthC = widthB;
+        const int widthC = widthB, heightC = heightA;
 
         printf("Matrix C: %d x %d \n", widthC, heightC);
         
