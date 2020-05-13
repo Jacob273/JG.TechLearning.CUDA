@@ -15,6 +15,43 @@ Implemented & measured:
 
 _Tasks that have been completed here and theoretical introduction to laboratories was developed by IT engineer and academic teacher - Slawomir Wernikowski at the West Pomeranian University of Technology_
 
+## Polynomial calculation results
+
+__Test 1__
+
+JG::Starting program which uses GPu and CPU to calculate polynomial for __<1000000>__ values
+* GPU no. of blocks : __<16>__
+* Duration GPU: <3> [ms]
+* Duration CPU: <2> [ms]
+
+__Test 2__
+JG::Starting program which uses GPu and CPU to calculate polynomial for __<10000000>__ values
+* GPU no. of blocks : __<16>__
+* Duration GPU: <28> [ms]
+* Duration CPU: <31> [ms]
+
+__Test 2.1__
+JG::Starting program which uses GPu and CPU to calculate polynomial for __<10000000>__ values
+* GPU no. of blocks : __<1024>__
+* Duration GPU: <17> [ms]
+* Duration CPU: <32> [ms]
+
+__Test 3__
+JG::Starting program which uses GPu and CPU to calculate polynomial for __<100000000>__ values
+* GPU no. of blocks : __<16>__
+* Duration GPU: <290> [ms]
+* Duration CPU: <348> [ms]
+
+__Test 4__
+* JG::Starting program which uses GPu and CPU to calculate polynomial for __<100000000>__ values
+* GPU no. of blocks : __<1024>__
+* Duration GPU: <189> [ms]
+* Duration CPU: <362> [ms]
+
+Conclusions:
+* When size of vector storing values is bigger than 10^6 the GPU calculations are much faster than CPU (even twice faster)
+* When number of blocks (and threads inside blocks) are fully used we may get results pretty fast, decreasing number of threads using in blocks will extend the time 
+
 ## Image gray scaling on CPU & GPU output files & measurements
 
 ![Input 1](./outputs/example.bmp)
