@@ -94,19 +94,16 @@ __CPU duration 343563144  nanoseconds__
 
 
 a) Matrix A=300x300, Matrix B=300x300
-    >CPU (avg) = 133ms
-    >GPU version "without pragma unroll" (avg) = 123ms 
-    >GPU version with pragma unroll (avg) = 111ms ( 10% time faster)
+   * CPU (avg) = 133ms
+   * GPU version "without pragma unroll" (avg) = 123ms 
+   * GPU version with pragma unroll (avg) = 111ms ( 10% time faster)
 
 b) Matrix A=900x900, Matrix B=900x900
 
-   >CPU (avg) = 4839 ms,
-   
-   >GPU version "without pragma unroll" (avg) = 1646ms
-   
-   >GPU version with pragma unroll (widthC calculated at runtime, no boost) = 1633ms (not faster at all)
-   
-   >GPU version with pragma roll but used CONST_WIDTH_C 400ms (almost 24-30% time faster)
+  * CPU (avg) = 4839 ms,
+  * GPU version "without pragma unroll" (avg) = 1646ms
+  * GPU version with pragma unroll (widthC calculated at runtime, no boost) = 1633ms (not faster at all)
+  * GPU version with pragma roll but used CONST_WIDTH_C 400ms (almost 24-30% time faster)
    
 
  Loop below has been tested with #pragma unroll
