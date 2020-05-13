@@ -23,29 +23,14 @@ _Tasks that have been completed here and theoretical introduction to laboratorie
 ![Output 2](./outputs/Output-example2.bmp)
 
 ---------------------------------------------
-LAB2
+Results
 ---------------------------------------------
-
-Tests performed on following CPU:
-
-Caption           : Intel64 Family 6 Model 94 Stepping 3
-
-DeviceID          : CPU0
-
-Manufacturer      : GenuineIntel
-
-MaxClockSpeed     : 2712
-
-Name              : Intel(R) Core(TM) i7-6820HQ CPU @ 2.70GHz
-
-SocketDesignation : U3E1
-
+CPU: Intel64 Family 6 Model 94 Stepping 3
 ---------------------------------------------
-Tested performed on following GPU:
-NVIDIA Quadro M2000M
-
+GPU:NVIDIA Quadro M2000M
 ---------------------------------------------
 __TEST1__
+
 Width of an image: 640
 
 Height of an image: 480
@@ -54,9 +39,9 @@ Resolution (total number of pixels): 307200
 
 Number of colors: 256
 
-GPU duration 2370833  nanoseconds
+__GPU duration 2370833  nanoseconds__
 
-CPU duration 69864629  nanoseconds
+__CPU duration 69864629  nanoseconds__
 
 ---------------------------------------------
 __TEST2__
@@ -69,9 +54,9 @@ Resolution (total number of pixels): 307200
 
 Number of colors: 256
 
-GPU duration 2420297  nanoseconds
+__GPU duration 2420297  nanoseconds__
 
-CPU duration 68725466  nanoseconds
+__CPU duration 68725466  nanoseconds__
 
 ---------------------------------------------
 __TEST3__
@@ -84,9 +69,9 @@ Resolution (total number of pixels): 1420419
 
 Number of colors: 16777216
 
-GPU duration 11482626  nanoseconds
+__GPU duration 11482626  nanoseconds__
 
-CPU duration 346865093  nanoseconds
+__CPU duration 346865093  nanoseconds__
 
 ---------------------------------------------
 
@@ -100,9 +85,9 @@ Resolution (total number of pixels): 1420419
 
 Number of colors: 16777216
 
-GPU duration 11523404  nanoseconds
+__GPU duration 11523404  nanoseconds__
 
-CPU duration 343563144  nanoseconds
+__CPU duration 343563144  nanoseconds__
 
 
 ## Matrix multiplication on CPU & GPU (how the loop rolling/unrolling performed by the NVCC compiler affects the time it takes to perform  calculations)
