@@ -90,5 +90,31 @@ __GPU duration 11523404  nanoseconds__
 __CPU duration 343563144  nanoseconds__
 
 
-## Matrix multiplication on CPU & GPU (how the loop rolling/unrolling performed by the NVCC compiler affects the time it takes to perform  calculations)
+## Matrix multiplication on CPU & GPU Results
+
+
+a) Matrix A=300x300, Matrix B=300x300
+    >CPU (avg) = 133ms
+    >GPU version "without pragma unroll" (avg) = 123ms 
+    >GPU version with pragma unroll (avg) = 111ms ( 10% time faster)
+
+b) Matrix A=900x900, Matrix B=900x900
+
+   >CPU (avg) = 4839 ms,
+   >GPU version "without pragma unroll" (avg) = 1646ms
+   >GPU version with pragma unroll (widthC calculated at runtime, no boost) = 1633ms (not faster at all)
+   >GPU version with pragma roll but used CONST_WIDTH_C 400ms (almost 24-30% time faster)
+
+ Loop below has been tested with #pragma unroll
+
+        for (int i = 0; i < CONST_WIDTH_C; i++)
+        {
+            tmp_sum += in_tabA[row * CONST_WIDTH_C+ i] * in_tabB[i * CONST_WIDTH_C + col];
+        }
+
+Conclusions:
+
+* The effectiveness of the #pragma unroll directive in the context of performance - strongly depends on what can be developed in a loop
+* When performing tests, it turned out that the CONST_WIDTH_C variable must be either constem or defined using #define - if it was calculated in runtime based on the size of dynamic matrix (i.e. not known at the compilation stage) - then #pragma unroll did not bring any profit
+* Because of #pragma unroll at the compilation stage, the number of operations that would have to be carried out in the case of dynamic loop development is reduced
 
