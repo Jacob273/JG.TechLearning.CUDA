@@ -10,11 +10,77 @@ Implemented & measured:
 
 1. Polynomial calculation on CPU & GPU (part of the code was provided by an academic teacher)
 2. Image gray scaling on CPU & GPU
+3. Matrix multiplication on CPU & GPU (how the loop rolling/unrolling performed by the NVCC compiler affects the time it takes to perform  calculations)
 
+
+## Image gray scaling on CPU & GPU output files & measurements
+Output files:
 ![Input 1](./outputs/example.bmp)
 ![Output 1](./outputs/Output-example.bmp)
 ![Input 2](./outputs/example2.bmp)
 ![Output 2](./outputs/Output-example2.bmp)
+
+---------------------------------------------
+LAB2
+---------------------------------------------
+Tests performed on following CPU:
+Caption           : Intel64 Family 6 Model 94 Stepping 3
+DeviceID          : CPU0
+Manufacturer      : GenuineIntel
+MaxClockSpeed     : 2712
+Name              : Intel(R) Core(TM) i7-6820HQ CPU @ 2.70GHz
+SocketDesignation : U3E1
+---------------------------------------------
+Tested performed on following GPU:
+NVIDIA Quadro M2000M
+---------------------------------------------
+TEST1
+Width of an image: 640
+Height of an image: 480
+Resolution (total number of pixels): 307200
+Number of colors: 256
+~~~~~~~~~~~~~~~~~~~~~~~~Started Gray Scaling Img on CPU
+~~~~~~~~~~~~~~~~~~~~~~~~Finished Gray Scaling Img on CPU
+~~~~~~~~~~~~~~~~~~~~~~~~Started Gray Scaling Img on GPU
+~~~~~~~~~~~~~~~~~~~~~~~~Finished Gray Scaling Img on GPU
+GPU duration 2370833  nanoseconds
+CPU duration 69864629  nanoseconds
+---------------------------------------------
+TEST2
+Width of an image: 640
+Height of an image: 480
+Resolution (total number of pixels): 307200
+Number of colors: 256
+~~~~~~~~~~~~~~~~~~~~~~~~Started Gray Scaling Img on CPU
+~~~~~~~~~~~~~~~~~~~~~~~~Finished Gray Scaling Img on CPU
+~~~~~~~~~~~~~~~~~~~~~~~~Started Gray Scaling Img on GPU
+~~~~~~~~~~~~~~~~~~~~~~~~Finished Gray Scaling Img on GPU
+GPU duration 2420297  nanoseconds
+CPU duration 68725466  nanoseconds
+---------------------------------------------
+TEST3
+Width of an image: 1419
+Height of an image: 1001
+Resolution (total number of pixels): 1420419
+Number of colors: 16777216
+~~~~~~~~~~~~~~~~~~~~~~~~Started Gray Scaling Img on CPU
+~~~~~~~~~~~~~~~~~~~~~~~~Finished Gray Scaling Img on CPU
+~~~~~~~~~~~~~~~~~~~~~~~~Started Gray Scaling Img on GPU
+~~~~~~~~~~~~~~~~~~~~~~~~Finished Gray Scaling Img on GPU
+GPU duration 11482626  nanoseconds
+CPU duration 346865093  nanoseconds
+---------------------------------------------
+TEST4
+Width of an image: 1419
+Height of an image: 1001
+Resolution (total number of pixels): 1420419
+Number of colors: 16777216
+~~~~~~~~~~~~~~~~~~~~~~~~Started Gray Scaling Img on CPU
+~~~~~~~~~~~~~~~~~~~~~~~~Finished Gray Scaling Img on CPU
+~~~~~~~~~~~~~~~~~~~~~~~~Started Gray Scaling Img on GPU
+~~~~~~~~~~~~~~~~~~~~~~~~Finished Gray Scaling Img on GPU
+GPU duration 11523404  nanoseconds
+CPU duration 343563144  nanoseconds
 
 
 3. Matrix multiplication on CPU & GPU (how the loop rolling/unrolling performed by the NVCC compiler affects the time it takes to perform  calculations)
