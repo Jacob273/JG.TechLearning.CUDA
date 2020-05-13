@@ -50,7 +50,7 @@ __Test 4__
 
 Conclusions:
 * When size of vector storing values is bigger than 10^6 the GPU calculations are much faster than CPU (even twice faster)
-* When number of blocks (and threads inside blocks) are fully used we may get results pretty fast, decreasing number of threads using in blocks will extend the time 
+* When number of blocks (and threads inside blocks) are fully used we may get results pretty fast, decreasing number of threads used in blocks will extend the time 
 
 ## Image gray scaling on CPU & GPU output files & measurements
 
